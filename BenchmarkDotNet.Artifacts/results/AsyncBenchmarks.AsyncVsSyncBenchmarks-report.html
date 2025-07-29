@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>AsyncBenchmarks.AsyncVsSyncBenchmarks-20250729-172134</title>
+
+<style type="text/css">
+	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; text-align: right; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+	tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet v0.13.12, Windows 11 (10.0.26100.4652)
+13th Gen Intel Core i5-1345U, 1 CPU, 12 logical and 10 physical cores
+.NET SDK 9.0.203
+  [Host]   : .NET 8.0.18 (8.0.1825.31117), X64 RyuJIT AVX2
+  .NET 8.0 : .NET 8.0.18 (8.0.1825.31117), X64 RyuJIT AVX2
+</code></pre>
+<pre><code>Job=.NET 8.0  Runtime=.NET 8.0  
+</code></pre>
+
+<table>
+<thead><tr><th>Method             </th><th>Mean  </th><th>Error </th><th>StdDev</th><th>Median</th><th>Ratio</th><th>RatioSD</th><th>Gen0</th><th>Gen1</th><th>Allocated</th><th>Alloc Ratio</th>
+</tr>
+</thead><tbody><tr><td>GetCustomerSync</td><td>41,511.54 ns</td><td>1,716.858 ns</td><td>5,062.194 ns</td><td>40,485.35 ns</td><td>1.000</td><td>0.00</td><td>12.2070</td><td>1.9531</td><td>77456 B</td><td>1.000</td>
+</tr><tr><td>GetCustomerAsync</td><td>42,714.36 ns</td><td>1,760.907 ns</td><td>5,192.073 ns</td><td>43,167.24 ns</td><td>1.050</td><td>0.21</td><td>12.2070</td><td>1.9531</td><td>77608 B</td><td>1.002</td>
+</tr><tr><td>GetCustomerValueTask</td><td>57,879.68 ns</td><td>3,368.943 ns</td><td>9,773.914 ns</td><td>62,016.53 ns</td><td>1.423</td><td>0.30</td><td>12.2070</td><td>1.9531</td><td>77656 B</td><td>1.003</td>
+</tr><tr><td>CalculateTotalSync</td><td>19,316.87 ns</td><td>385.430 ns</td><td>1,080.788 ns</td><td>19,410.39 ns</td><td>0.480</td><td>0.06</td><td>-</td><td>-</td><td>40 B</td><td>0.001</td>
+</tr><tr><td>CalculateTotalAsync</td><td>30,841.26 ns</td><td>1,079.088 ns</td><td>3,164.777 ns</td><td>30,549.47 ns</td><td>0.755</td><td>0.12</td><td>0.0610</td><td>-</td><td>432 B</td><td>0.006</td>
+</tr><tr><td>CalculateTotalAsyncDirect</td><td>37,708.00 ns</td><td>1,055.228 ns</td><td>3,061.408 ns</td><td>36,770.64 ns</td><td>0.924</td><td>0.12</td><td>-</td><td>-</td><td>206 B</td><td>0.003</td>
+</tr><tr><td>ProcessDataSync</td><td>19.95 ns</td><td>0.806 ns</td><td>2.300 ns</td><td>18.72 ns</td><td>0.000</td><td>0.00</td><td>0.0127</td><td>-</td><td>80 B</td><td>0.001</td>
+</tr><tr><td>ProcessDataAsync</td><td>1,435.27 ns</td><td>27.026 ns</td><td>69.762 ns</td><td>1,406.69 ns</td><td>0.036</td><td>0.00</td><td>0.0439</td><td>-</td><td>279 B</td><td>0.004</td>
+</tr><tr><td>ProcessDataValueTask</td><td>32.70 ns</td><td>0.568 ns</td><td>0.532 ns</td><td>32.63 ns</td><td>0.001</td><td>0.00</td><td>0.0127</td><td>-</td><td>80 B</td><td>0.001</td>
+</tr></tbody></table>
+</body>
+</html>
