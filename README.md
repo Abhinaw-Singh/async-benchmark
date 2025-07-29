@@ -7,7 +7,7 @@ This project contains benchmarks to support the blog post "Why Async Can Be Slow
 1. **Install .NET 8 SDK** (if not already installed)
 2. **Navigate to the project directory:**
    ```powershell
-   cd why-async-can-be-slow
+   cd async-benchmark
    ```
 
 3. **Restore packages:**
